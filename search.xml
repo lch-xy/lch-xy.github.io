@@ -132,4 +132,28 @@
         <tag>Zookeeper</tag>
       </tags>
   </entry>
+  <entry>
+    <title>0633.Sum-Of-Square-Numbers</title>
+    <url>/2024/11/04/0633-Sum-Of-Square-Numbers/</url>
+    <content><![CDATA[<h2 id="每日一题："><a href="#每日一题：" class="headerlink" title="每日一题："></a>每日一题：</h2><p>给定一个非负整数 <code>c</code> ，你要判断是否存在两个整数 <code>a</code> 和 <code>b</code> ，使得 <code>a^2 + b^2 = c</code> 。</p>
+<p> <strong>示例 1：</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：c = 5</span><br><span class="line">输出：true</span><br><span class="line">解释：1 * 1 + 2 * 2 = 5</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p> <strong>示例 2：</strong> </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：c = 3</span><br><span class="line">输出：false</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p> <strong>提示：</strong> </p>
+<ul>
+<li><code>0 &lt;= c &lt;= 2^31 - 1</code></li>
+</ul>
+<p><strong>标签</strong><br><code>数学</code> <code>双指针</code> <code>二分查找</code> </p>
+<h2 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h2><p>首先我们可以很容易想到两个for循环暴力求解，但是如果我们想要用O(n)的时间的话，就只能遍历一遍，于是很容易就会想到使用双指针遍历去进行首尾的区间压缩，然后我们得确定双指针的区间范围[0,&#8730;c]</p>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">judgeSquareSum</span><span class="params">(c <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	d := math.Sqrt(<span class="type">float64</span>(c))</span><br><span class="line">	end := <span class="type">int</span>(math.Ceil(d))</span><br><span class="line">	start := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> start &lt; end &#123;</span><br><span class="line">		<span class="keyword">if</span> start*start+end*end &gt; c &#123;</span><br><span class="line">			end--</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> start*start+end*end &lt; c &#123;</span><br><span class="line">			start++</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>
